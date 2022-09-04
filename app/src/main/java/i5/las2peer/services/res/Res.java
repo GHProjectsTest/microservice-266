@@ -125,6 +125,61 @@ public class Res extends RESTService {
     return null;
   }
 
+  /**
+   * 
+   * deleteDishRating
+   *
+   * 
+   * @param ratingId  a String
+   * @param dishId  a String
+
+   * 
+   * @return Response 
+   * 
+   */
+  @DELETE
+  @Path("/dishes/{dishId}/ratings/{ratingId}")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.TEXT_PLAIN)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "notfound"),
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "delete")
+  })
+  @ApiOperation(value = "deleteDishRating", notes = " ")
+  public Response deleteDishRating(@PathParam("ratingId") String ratingId, @PathParam("dishId") String dishId) {
+
+
+
+
+     
+    // service method invocations
+
+     
+
+
+
+
+    // notfound
+    boolean notfound_condition = true;
+    if(notfound_condition) {
+      JSONObject notfound = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_NOT_FOUND).entity(notfound.toJSONString()).build();
+    }
+    // delete
+    boolean delete_condition = true;
+    if(delete_condition) {
+      JSONObject delete = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_OK).entity(delete.toJSONString()).build();
+    }
+    return null;
+  }
+
 
 
   }
