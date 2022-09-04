@@ -168,6 +168,32 @@ public class ResTest {
 
     
   }
+  /**
+   * 
+   * Test for the ShouldFail_ID225322 method.
+   * 
+   */
+  @Test
+  public void testShouldFail_ID225322() {
+    MiniClientCoverage c = new MiniClientCoverage(mainPath);
+    c.setConnectorEndpoint(connector.getHttpEndpoint());
+    
+        
+    try {
+      c.setLogin(AnonymousAgentImpl.IDENTIFIER, "");
+      ClientResponse result = c.sendRequest("GET", "/dishes", """
+""", "text/plain", "*/*", new HashMap<>(), new Object[0]);
+      System.out.println("Result of request with id: 283672: " + result.getResponse().trim());
+    
+      Assert.assertEquals("[293185]", 201, result.getHttpCode());
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail("Exception: " + e);
+    }
+
+    
+  }
 
 
 
