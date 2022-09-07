@@ -127,6 +127,72 @@ public class Res extends RESTService {
 
   /**
    * 
+   * createDishRating
+   *
+   * 
+   * @param id  a String
+   * @param body  a JSONObject
+
+   * 
+   * @return Response 
+   * 
+   */
+  @POST
+  @Path("/dishes/{id}/ratings")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "notfound"),
+       @ApiResponse(code = HttpURLConnection.HTTP_CREATED, message = "created"),
+       @ApiResponse(code = HttpURLConnection.HTTP_BAD_REQUEST, message = "badreq")
+  })
+  @ApiOperation(value = "createDishRating", notes = " ")
+  public Response createDishRating(@PathParam("id") String id, String body) {
+    JSONObject body_JSON = (JSONObject) JSONValue.parse(body);
+
+
+
+
+     
+    // service method invocations
+
+     
+
+
+
+
+    // notfound
+    boolean notfound_condition = true;
+    if(notfound_condition) {
+      JSONObject notfound = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_NOT_FOUND).entity(notfound.toJSONString()).build();
+    }
+    // created
+    boolean created_condition = true;
+    if(created_condition) {
+      JSONObject created = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_CREATED).entity(created.toJSONString()).build();
+    }
+    // badreq
+    boolean badreq_condition = true;
+    if(badreq_condition) {
+      JSONObject badreq = new JSONObject();
+
+      
+
+      return Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(badreq.toJSONString()).build();
+    }
+    return null;
+  }
+
+  /**
+   * 
    * deleteDishRating
    *
    * 
