@@ -148,8 +148,14 @@ public class Res extends RESTService {
   })
   @ApiOperation(value = "createDishRating", notes = " ")
   public Response createDishRating(@PathParam("id") String id, String body) {
-    JSONObject body_JSON = (JSONObject) JSONValue.parse(body);
-
+   classes.Rating payloadbodyObject = new classes().new Rating();
+   try { 
+       payloadbodyObject.fromJSON(body);
+   } catch (Exception e) { 
+       e.printStackTrace();
+       JSONObject result = new JSONObject();
+       return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity("Cannot convert json to object").build();
+   }
 
 
 
